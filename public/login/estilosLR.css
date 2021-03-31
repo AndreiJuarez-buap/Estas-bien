@@ -1,0 +1,121 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #2c4682;
+    font-family: 'Rubik', sans-serif;
+}
+
+.imagen-ok{
+    width: 80px;
+    height: 80px;
+    background-image: url("imagenes/ok.png");
+    background-size: 100%;
+    position: relative;
+    display: inline-block;
+}
+
+.formulario{
+    line-height: 0px;
+    background-color: #0e182f;
+    /*border: 2px solid red;*/
+    color: white;
+    width: 380px;
+    height: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    text-align: center;
+    z-index: 10;
+}
+
+.input-campos{
+    /*text-align: initial;*/
+    position: relative;
+    top: 20px;
+}
+
+h1{
+    display: inline-block;
+    margin-top: 50px;
+}
+
+
+h5{
+    margin-top: 40px;
+}
+
+label{
+    font-weight:500;
+    position: relative;
+    left: -130px;
+}
+
+.email{
+    position: relative;
+    left: -130px;
+}
+
+.box-correo{
+    position: relative;
+    top: 10px;
+}
+
+.datos-password{
+    position: relative;
+    top: 30px;
+}
+
+.box-password{
+    position: relative;
+    top: 10px;
+}
+
+.correo-box, .password-box{
+    width: 310px;
+    height: 30px;
+    border: 1px solid #1a2846;
+    color: white;
+}
+
+button{
+    font-weight: 500;
+    position: relative;
+    top: 50px;
+    height: 30px;
+    width: 100px;
+    background-color: #1a2846;
+    color: white;
+    border: 1px solid #1a2846;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: #2c4682;
+}
+
+.ojo-abierto{
+    width: 30px;
+    position: relative;
+    display: inline-block;
+    top: 42px;
+    left: 180px;
+    z-index: 100;
+    cursor: pointer;
+}
+
+
+/*Estilos de la seccion login (Redireccion a registro)*/
+
+.a-registro{
+    position: relative;
+    top: 100px;
+    left: -110px;
+}
+
+.a-registro > a{
+    text-decoration: none;
+    color: white;
+}
+
