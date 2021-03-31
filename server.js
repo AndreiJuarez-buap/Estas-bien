@@ -25,7 +25,7 @@ server.listen(app.get('port'), ()=>{
 
 //Ruta al Landing Page
 router.get('/', function(req,res){
-    res.sendFile(path.join(__dirname+'/public'+'/landing.ejs'));
+    res.sendFile(path.join(__dirname+'/public'+'/landing.html'));
 })
 
 //Ruta al registro de la app
