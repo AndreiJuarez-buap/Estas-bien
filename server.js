@@ -2,9 +2,33 @@ const express = require('express');
 const http = require('http');
 const router = express.Router();
 const path = require('path');
+const bodyParser = require('body-parser');
+const db=require('mongoose');
+const User = require('./models/usuario');
 
+/****************************************************
+            Conexion a la Base de datos
+**************************************************/
+
+const mongo_uri="mongodb+srv://admin:admin@cluster0.uxvyt.mongodb.net/Project_0?retryWrites=true&w=majority";
+
+db.connect(mongo_uri,{useNewUrlParser: true, useUnifiedTopology:true}, function(err){
+    if(err){
+        throw err;
+    }else{
+        console.log("Conexion establecida")
+    }
+});
+
+
+/****************************************************
+        Creación del Servidor con express
+**************************************************/
 
 const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+
 const server = http.createServer(app);
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.static(__dirname + 'login'));
@@ -21,7 +45,9 @@ server.listen(app.get('port'), ()=>{
 });*/
 
 
-//Rutas del servidor
+/****************************************************
+                Rutas del Servidor
+**************************************************/
 
 //Ruta al Landing Page
 router.get('/', function(req,res){
@@ -36,6 +62,29 @@ router.get('/registro', function(req,res){
 //Ruta al login de la app
 router.get('/login', function(req,res){
     res.sendFile(path.join(__dirname+'/public'+'/login'+'/login.html'));
+})
+
+/****************************************************
+  Metodos POST para registrarse e inicio de sesión
+**************************************************/
+
+//POST para el registro
+router.post('/registrarse', (req,res)=>{
+    const{mail,password}=req.body;
+    const user = new User ({mail, password});
+    user.save(err =>{
+        if(err){
+            res.status(500).send('Error al registrar usuario');
+        }else{
+            res.status(200).send('Usuario Registrado');
+        }
+    });
+})
+
+
+
+router.get("*", function (req,res){
+    res.send("404 not found");
 })
 
 app.use('/', router);
