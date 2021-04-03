@@ -10,7 +10,7 @@ const User = require('./models/usuario');
 
 const mongo_uri="mongodb+srv://admin:admin@cluster0.uxvyt.mongodb.net/Project_0?retryWrites=true&w=majority";
 
-db.connect(mongo_uri,{useNewUrlParser: true, useUnifiedTopology:true}, function(err){
+db.connect(mongo_uri,{useNewUrlParser: true, useUnifiedTopology:true, useCreateIndex: true}, function(err){
     if(err){
         throw err;
     }else{
