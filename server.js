@@ -6,9 +6,7 @@ const bodyParser = require('body-parser');
 const db=require('mongoose');
 const User = require('./models/usuario');
 
-/****************************************************
-            Conexion a la Base de datos
-**************************************************/
+//Conexion a la base de datos
 
 const mongo_uri="mongodb+srv://admin:admin@cluster0.uxvyt.mongodb.net/Project_0?retryWrites=true&w=majority";
 
@@ -21,9 +19,7 @@ db.connect(mongo_uri,{useNewUrlParser: true, useUnifiedTopology:true}, function(
 });
 
 
-/****************************************************
-        Creación del Servidor con express
-**************************************************/
+//Creacion del servidor express
 
 const app = express();
 app.use(bodyParser.json());
@@ -45,9 +41,7 @@ server.listen(app.get('port'), ()=>{
 });*/
 
 
-/****************************************************
-                Rutas del Servidor
-**************************************************/
+//Rutas del servidor
 
 //Ruta al Landing Page
 router.get('/', function(req,res){
@@ -64,10 +58,7 @@ router.get('/login', function(req,res){
     res.sendFile(path.join(__dirname+'/public'+'/login'+'/login.html'));
 })
 
-/****************************************************
-  Metodos POST para registrarse e inicio de sesión
-**************************************************/
-
+//Metodos POST
 //POST para el registro
 router.post('/registrarse', (req,res)=>{
     const{mail,password}=req.body;
