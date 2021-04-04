@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const db=require('mongoose');
 const User = require('./models/usuario');
 
+
+
 //Conexion a la base de datos
 
 const mongo_uri="mongodb+srv://admin:admin@cluster0.uxvyt.mongodb.net/Project_0?retryWrites=true&w=majority";
@@ -84,7 +86,9 @@ router.post('/authenticate', (req,res)=>{
                 if(err){
                     res.status(500).send('Error al autenticar al usuario');
                 }else if(result){
-                    res.status(200).send('Usuario Autenticado Correctamente');
+                    res.status(200).send('Usuario Autenticado Correctamente'+user.mail);
+                    console.log("Usuario: "+ user.mail);
+                    Text.insertarTexto(user.mail);
                 }else{
                     res.status(500).send('Usuario y/o Contraseña Incorrecta');
                 }
