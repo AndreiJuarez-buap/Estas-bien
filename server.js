@@ -91,9 +91,8 @@ router.post('/authenticate', (req,res)=>{
                 if(err){
                     res.status(500).send('Error al autenticar al usuario');
                 }else if(result){
-                    res.status(200).send('Usuario Autenticado Correctamente'+user.mail);
+                    res.status(200).send('Usuario Autenticado Correctamente'+user._id);
                     console.log("Usuario: "+ user.mail);
-                    Text.insertarTexto(user.mail);
                 }else{
                     res.status(500).send('Usuario y/o Contraseña Incorrecta');
                 }
