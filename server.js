@@ -72,6 +72,27 @@ router.post('/registrarse', (req,res)=>{
     });
 })
 
+router.post('/authenticate', (req,res)=>{
+    const{mail, password} = req.body;
+    User.findOne({mail}, (err,user)=>{
+        if(err){
+            res.status(500).send('Error al autenticar al usuario');
+        }else if(!user){
+            res.status(500).send('No existe el usuario');
+        }else{
+            user.isCorrectPassword(password, (err, result)=>{
+                if(err){
+                    res.status(500).send('Error al autenticar al usuario');
+                }else if(result){
+                    res.status(200).send('Usuario Autenticado Correctamente');
+                }else{
+                    res.status(500).send('Usuario y/o Contraseña Incorrecta');
+                }
+            });
+        }
+    });
+});
+
 
 
 router.get("*", function (req,res){
