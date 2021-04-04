@@ -28,6 +28,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 const server = http.createServer(app);
+
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/public');
+
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.static(__dirname + 'login'));
 
@@ -47,7 +51,8 @@ server.listen(app.get('port'), ()=>{
 
 //Ruta al Landing Page
 router.get('/', function(req,res){
-    res.sendFile(path.join(__dirname+'/public'+'/landing.html'));
+    //res.sendFile(path.join(__dirname+'/public'+'/landing.html'));
+    res.render('landing');
 })
 
 //Ruta al registro de la app
