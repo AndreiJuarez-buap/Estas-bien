@@ -1,0 +1,43 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Rubik', sans-serif;
+}
+
+body{
+    background-color: #2c4682;
+    color: white;
+}
+
+
+.contenedor{
+    height: 400px;
+    width: 700px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    text-align: center;
+    /*border: 1px solid red;*/
+}
+
+.imagen-bad{
+    position: relative;
+    width: 90px;
+    height: 90px;
+    background-image: url("imagenes/bad-review.png");
+    background-size: 100%;
+    top: 50px;
+    left: 480px;
+}
+
+h1{
+    font-size: 150px;
+    color: #0e182f;
+    text-shadow: -4px 8px 5px black;
+}
+
+h3{
+    font-size: 30px;
+}

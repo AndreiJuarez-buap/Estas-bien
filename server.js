@@ -50,8 +50,8 @@ server.listen(app.get('port'), ()=>{
 
 //Ruta al Landing Page
 router.get('/', function(req,res){
-    //res.sendFile(path.join(__dirname+'/public'+'/landing.html'));
-    res.render('landing');
+    res.sendFile(path.join(__dirname+'/public'+'/landing.html'));
+    //res.render('landing');
 })
 
 //Ruta al registro de la app
@@ -153,7 +153,7 @@ router.post('/home', (req,res)=>{
 
 
 router.get("*", function (req,res){
-    res.send("404 not found");
+    res.sendFile(path.join(__dirname+'/public'+'/404.html'));
 })
 
 app.use('/', router);
