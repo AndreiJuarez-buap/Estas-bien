@@ -33,7 +33,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 const server = http.createServer(app);
 
 app.set('view engine', 'ejs');
-app.set('views', __dirname + '/public');
+app.set('views', __dirname + '/views');
 
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.static(__dirname + 'login'));
@@ -101,7 +101,7 @@ router.post('/registrarse', (req,res)=>{
                     res.status(200).jsonp(req.body);
                 }
             });
-            res.status(200).send('Usuario Registrado');
+            res.status(200).send('Verifica tu correo electronico para acceder a la plataforma');
         }
     });
 })
@@ -116,9 +116,9 @@ router.get('/verifica-email', (req,res)=>{
             user.isVerified=true;
             user.save(err =>{
                 if(err){
-                    res.status(500).send('Error al registrar usuario');
+                    res.status(500).send('Error al verificar usuario');
                 }else{
-                    res.status(200).send('Usuario Registrado');
+                    res.status(200).send('Usuario Verificado');
                 }
             });
         }
@@ -151,7 +151,7 @@ router.post('/home', (req,res)=>{
 });
 
 
-
+//Implementacion de la pagina de error 404
 router.get("*", function (req,res){
     res.sendFile(path.join(__dirname+'/public'+'/404.html'));
 })
