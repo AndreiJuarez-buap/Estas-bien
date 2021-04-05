@@ -6,7 +6,9 @@ const Schema = mongoose.Schema;
 
 const mySchema = new Schema({
     mail: { type: String, require: true, unique: true},
-    password: {type:String, require: true}
+    password: {type:String, require: true},
+    emailToken: String,
+    isVerified: Boolean
 });
 
 mySchema.pre('save', function(next){
@@ -24,6 +26,8 @@ mySchema.pre('save', function(next){
         next();
     }
 });
+
+
 
 mySchema.methods.isCorrectPassword = function(password, callback){
     bcrypt.compare(password, this.password, function(err, same) {

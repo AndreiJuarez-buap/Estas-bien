@@ -5,8 +5,11 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const db=require('mongoose');
 const User = require('./models/usuario');
+const nodemailer = require('nodemailer');
+const bcrypt = require('bcrypt');
+const url = require('url');
 
-
+const saltRounds = 10;
 
 //Conexion a la base de datos
 
@@ -42,10 +45,6 @@ server.listen(app.get('port'), ()=>{
     console.log("Servidor en puerto 3000");
 });
 
-/*app.listen(3000, ()=>{
-    console.log("Servidor en puerto 3000");
-});*/
-
 
 //Rutas del servidor
 
@@ -69,23 +68,73 @@ router.get('/login', function(req,res){
 //POST para el registro
 router.post('/registrarse', (req,res)=>{
     const{mail,password}=req.body;
-    const user = new User ({mail, password});
+    const token = bcrypt.hashSync(mail, saltRounds);
+    const user = new User ({mail, password, emailToken: token, isVerified: false});
     user.save(err =>{
         if(err){
             res.status(500).send('Error al registrar usuario');
         }else{
+            //Variable de transporte de email
+            var transporter = nodemailer.createTransport({
+                host: 'smtp.gmail.com',
+                port: 465,
+                secure: true,
+                auth:{
+                    user: 'andrei.juarez.cc@gmail.com',
+                    pass: 'owyifkhiaprldboe'
+                },
+            });
+            //diseño de correo electronico a usuario nuevo
+            var mailOptions={
+                from : 'Team Estas-bien',
+                to : user.mail,
+                subject: 'Correo de Verificación',
+                text: "Para mantener tu la seguridad de tu informacion, te pedimos verificar tu cuenta con el siguiente enlace, da clic para verificar la cuenta",
+                html: '<a href="http://'+req.headers.host+'/verifica-email/token='+user.emailToken+'">Verifica tu Correo</a>'
+            }
+            //envio de correo electronico
+            transporter.sendMail(mailOptions, (err,info)=>{
+                if(err){
+                    res.status(500).send(err.message);
+                }else{
+                    console.log("mail enviado");
+                    res.status(200).jsonp(req.body);
+                }
+            });
             res.status(200).send('Usuario Registrado');
         }
     });
 })
 
-router.post('/authenticate', (req,res)=>{
+//Ruta para la verificacion del correo electronico
+router.get('/verifica-email', (req,res)=>{
+    User.findOne({emailToken: req.query.token}, (err, user)=>{
+        if(!user){
+            res.status(500).send('No existe el usuario');
+        }else{
+            user.emailToken=null;
+            user.isVerified=true;
+            user.save(err =>{
+                if(err){
+                    res.status(500).send('Error al registrar usuario');
+                }else{
+                    res.status(200).send('Usuario Registrado');
+                }
+            });
+        }
+    });
+});
+
+//Post para el login
+router.post('/home', (req,res)=>{
     const{mail, password} = req.body;
     User.findOne({mail}, (err,user)=>{
         if(err){
             res.status(500).send('Error al autenticar al usuario');
         }else if(!user){
             res.status(500).send('No existe el usuario');
+        }else if(user.isVerified===false){
+            res.status(500).send('No ha verificado su correo electronico');
         }else{
             user.isCorrectPassword(password, (err, result)=>{
                 if(err){
