@@ -90,7 +90,7 @@ router.post('/registrarse', (req,res)=>{
                 to : user.mail,
                 subject: 'Correo de Verificación',
                 text: "Para mantener tu la seguridad de tu informacion, te pedimos verificar tu cuenta con el siguiente enlace, da clic para verificar la cuenta",
-                html: '<a href="http://'+req.headers.host+'/verifica-email/token='+user.emailToken+'">Verifica tu Correo</a>'
+                html: '<a href="https://'+req.headers.host+'/verifica-email/token='+user.emailToken+'">Verifica tu Correo</a>'
             }
             //envio de correo electronico
             transporter.sendMail(mailOptions, (err,info)=>{
