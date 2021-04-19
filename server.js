@@ -54,6 +54,16 @@ router.get('/', function(req,res){
     //res.render('landing');
 })
 
+//Ruta a la seccion de nosotros
+router.get('/nosotros', function(req,res){
+    res.sendFile(path.join(__dirname+'/public'+'/nosotros.html'));
+})
+
+//Ruta a la seccion de objetivo
+router.get('/objetivo', function(req,res){
+    res.sendFile(path.join(__dirname+'/public'+'/objetivo.html'));
+})
+
 //Ruta al registro de la app
 router.get('/registro', function(req,res){
     res.sendFile(path.join(__dirname+'/public'+'/login'+'/registro.html'));
