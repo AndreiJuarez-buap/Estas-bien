@@ -1,0 +1,177 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Rubik', sans-serif;
+}
+
+body{
+    background: #42455a;
+    /*display: flex;*/
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.contenedor{
+    width: 100%;
+    height: 100%;
+}
+
+.menu ul{
+    display: inline-flex;
+    margin: 50px;
+}
+
+.menu ul li{
+    list-style: none;
+    margin: 0 20px;
+    color: white;
+}
+
+.active a{
+    text-decoration: none; 
+    color: #489ed7 !important;
+}
+
+.logo img{
+    width: 50px;
+    margin-top: -15px;
+    margin-right: 48px;
+}
+
+.inicia-sesion{
+    width: 120px;
+    height: 35px;
+    top: 40px;
+    right: 80px;
+    position: absolute;
+    color: white;
+    background: #2c2d49;
+    border: 1px solid #2c2d49;
+}
+
+.inicia-sesion a{
+    text-decoration: none;
+    color: white;
+}
+
+.inicia-sesion:hover{
+    background: #1a2846;
+    border: 1px solid #1a2846;
+}
+
+.informacion{
+    width: 80%;
+    height: 70%;
+    top: 25%;
+    left: 130px;
+    position: absolute;
+    color: white;
+}
+
+.app-text{
+    width: 50%;
+    float: left;
+}
+
+.app-text h1{
+    font-size: 60px;
+    width: 640px;
+    position: relative;
+    margin-left: 40px;
+}
+
+.app-text p{
+    width: 650px;
+    font-size: 20px;
+    margin: 30px 0 30px 40px;
+    line-height: 25px;
+    color: #919191;;
+}
+
+.parametros{
+    width: 400px;
+    margin: 60px auto;
+    color: white;
+    list-style: none;
+    position: absolute;
+    left: 65%;
+}
+
+.parametros li{
+    margin: 20px 0;
+}
+
+.bar{
+    background-color: #353b48;
+    display: block;
+    height: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 0 10px #2187e7b3;
+}
+
+.bar span{
+    height: 2px;
+    float: left;
+    background: #2187e7;
+}
+
+.ansiedad{
+    width: 90%;
+    animation: ansiedad 2s;
+}
+
+.estres{
+    width: 65%;
+    animation: estres 2s;
+}
+
+.inseguridad{
+    width: 50%;
+    animation: inseguridad 2s;
+}
+
+.tristeza{
+    width: 70%;
+    animation: tristeza 2s;
+}
+
+@keyframes ansiedad {
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 90%;
+    }
+}
+
+@keyframes estres {
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 65%;
+    }
+}
+
+@keyframes inseguridad {
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 50%;
+    }
+}
+
+@keyframes tristeza {
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 70%;
+    }
+}
