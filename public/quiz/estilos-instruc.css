@@ -26,7 +26,7 @@ h1{
     align-items: center;
     max-width: 80rem;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 1rem;
 }
 
 .flex-column{
@@ -67,6 +67,32 @@ h1{
 }
 
 .btn[disabled]:hover{
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+
+.btn1{
+    font-size: 2.4rem;
+    padding: 1rem 0;
+    width: 30rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    color: white;
+    background: #489ed7;
+    border-radius: 4px;
+}
+
+.btn1:hover{
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 #1a2846;
+    transition: transform 150ms;
+    transform: scale(1.03);
+}
+
+.btn1[disabled]:hover{
     cursor: not-allowed;
     box-shadow: none;
     transform: none;
