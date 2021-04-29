@@ -1,5 +1,11 @@
 const preg1a = document.getElementById("1")
 const preg1b = document.getElementById("2")
+
+const preg2a = document.getElementById("3")
+const preg2b = document.getElementById("4")
+const preg2c = document.getElementById("5")
+const preg2d = document.getElementById("6")
+
 var conteo1=0
 var conteo2=0
 var bandSelect = false
