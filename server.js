@@ -8,6 +8,8 @@ const User = require('./models/usuario');
 const nodemailer = require('nodemailer');
 const bcrypt = require('bcrypt');
 const url = require('url');
+const session = require('express-session');
+const MongoStore = require('connect-mongodb-session')(session);
 
 const saltRounds = 10;
 
@@ -23,6 +25,10 @@ db.connect(mongo_uri,{useNewUrlParser: true, useUnifiedTopology:true, useCreateI
     }
 });
 
+var store1 = new MongoStore({
+    uri: 'mongodb+srv://admin:admin@cluster0.uxvyt.mongodb.net/Project_0?retryWrites=true&w=majority',
+    collection: 'sessiones'
+})
 
 //Creacion del servidor express
 
@@ -34,6 +40,13 @@ const server = http.createServer(app);
 
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
+
+app.use(session({
+    secret: 'ashwtbuap2021',
+    resave: false,
+    saveUninitialized: false,
+    store: store1
+}));
 
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.static(__dirname + 'login'));
@@ -80,6 +93,7 @@ router.post('/registrarse', (req,res)=>{
     const{mail,password}=req.body;
     const token = bcrypt.hashSync(mail, saltRounds);
     const user = new User ({mail, password, emailToken: token, isVerified: false});
+    req.session.my_variable=mail;
     user.save(err =>{
         if(err){
             res.status(500).send('Error al registrar usuario');
