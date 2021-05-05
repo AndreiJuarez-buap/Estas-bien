@@ -5,6 +5,9 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const db=require('mongoose');
 const User = require('./models/usuario');
+const Act = require('./models/actividades');
+const Espec = require('./models/especialistas');
+const Admin = require('./models/admin');
 const nodemailer = require('nodemailer');
 const bcrypt = require('bcrypt');
 const url = require('url');
@@ -175,6 +178,41 @@ router.post('/home', (req,res)=>{
     });
 });
 
+router.post('/activi', (req,res)=>{
+    const {nombre,desc}=req.body;
+    const act = new Act ({nombre,desc});
+    act.save(err =>{
+        if(err){
+            res.status(500).send('Error al registrar actividad');
+        }else{
+            res.status(200).send('Actividad registrada');
+        }
+    });
+});
+
+router.post('/especialista', (req,res)=>{
+    const {nombre,direcc,telefono,mail,password}=req.body;
+    const espec = new Espec ({nombre,direcc,telefono,mail,password});
+    espec.save(err =>{
+        if(err){
+            res.status(500).send('Error al registrar especialista');
+        }else{
+            res.status(200).send('Especialista registrado');
+        }
+    });
+});
+
+router.post('/admin', (req,res)=>{
+    const {mail,password}=req.body;
+    const admin = new Admin ({mail,password});
+    admin.save(err =>{
+        if(err){
+            res.status(500).send('Error al registrar actividad');
+        }else{
+            res.status(200).send('Actividad registrada');
+        }
+    });
+});
 
 //Implementacion de la pagina de error 404
 router.get("*", function (req,res){

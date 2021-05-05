@@ -6,8 +6,7 @@ const Schema = mongoose.Schema;
 
 const mySchema = new Schema({
     mail: { type: String, require: true, unique: true},
-    password: {type:String, require: true},
-    emailToken: String,
+    password: {type:String, require: true}
 });
 
 mySchema.pre('save', function(next){
