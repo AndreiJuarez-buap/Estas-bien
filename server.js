@@ -179,8 +179,8 @@ router.post('/home', (req,res)=>{
 });
 
 router.post('/activi', (req,res)=>{
-    const {nombre,desc}=req.body;
-    const act = new Act ({nombre,desc});
+    const {nombre,descripcion}=req.body;
+    const act = new Act ({nombre,descripcion});
     act.save(err =>{
         if(err){
             res.status(500).send('Error al registrar actividad');
@@ -191,8 +191,8 @@ router.post('/activi', (req,res)=>{
 });
 
 router.post('/especialista', (req,res)=>{
-    const {nombre,direcc,telefono,mail,password}=req.body;
-    const espec = new Espec ({nombre,direcc,telefono,mail,password});
+    const {nombre,direccion,telefono,mail,password}=req.body;
+    const espec = new Espec ({nombre,direccion,telefono,mail,password});
     espec.save(err =>{
         if(err){
             res.status(500).send('Error al registrar especialista');
@@ -207,12 +207,24 @@ router.post('/admin', (req,res)=>{
     const admin = new Admin ({mail,password});
     admin.save(err =>{
         if(err){
-            res.status(500).send('Error al registrar actividad');
+            res.status(500).send('Error al registrar administrador');
         }else{
-            res.status(200).send('Actividad registrada');
+            res.status(200).send('Administrador registrado');
         }
     });
 });
+
+router.get("/adm", function (req,res){
+    res.sendFile(path.join(__dirname+'/public'+'/admin.html'));
+})
+
+router.get("/espe", function (req,res){
+    res.sendFile(path.join(__dirname+'/public'+'/especialista.html'));
+})
+
+router.get("/act", function (req,res){
+    res.sendFile(path.join(__dirname+'/public'+'/act.html'));
+})
 
 //Implementacion de la pagina de error 404
 router.get("*", function (req,res){

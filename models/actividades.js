@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const mySchema = new Schema({
-    Descripcion: String,
-    isVerified: Boolean
+    nombre: String,
+    descripcion: String
 });
 
 
