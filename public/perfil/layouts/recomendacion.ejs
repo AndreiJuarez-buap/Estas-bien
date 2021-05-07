@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu</title>
-    <link rel="stylesheet" href="../css/estilos.css">
-    <link rel="stylesheet" href="../css/css-bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../perfil/css/estilos.css">
+    <link rel="stylesheet" href="../perfil/css/css-bootstrap/bootstrap.min.css">
 </head>
 <body>
 
@@ -46,7 +46,7 @@
             <div class="opciones">
                 <div class="opc col-11">
                     <img src="../img/usuario.png" alt="">
-                    <a href="perfil.html">Perfil</a>                        
+                    <a href="/prueba">Perfil</a>                        
                 </div>
                 <div class="opc col-11">
                     <img src="../img/notification.png" alt="">
@@ -57,7 +57,7 @@
                 </div>
                 <div class="opc col-11">
                     <img src="../img/test.png" alt="">
-                    <a href="../layouts/recomendacion.html" class="active">Recomendaciones de Actividades</a>
+                    <a href="/actividades" class="active">Recomendaciones de Actividades</a>
                 </div>
                 <div class="opc col-11">
                     <img src="../img/agenda.png" alt="">
@@ -102,7 +102,7 @@
                         
                         <div class="opc col-11">
                             <img src="../img/usuario.png" alt="">
-                            <a href="perfil.html">Perfil</a>                        
+                            <a href="/prueba">Perfil</a>                        
                         </div>
                         <div class="opc col-11">
                             <img src="../img/notification.png" alt="">
@@ -113,7 +113,7 @@
                         </div>
                         <div class="opc col-11">
                             <img src="../img/test.png" alt="">
-                            <a href="../layouts/recomendacion.html">Recomendaciones de Actividades</a>
+                            <a href="/actividades">Recomendaciones de Actividades</a>
                         </div>
                         <div class="opc col-11">
                             <img src="../img/agenda.png" alt="">
@@ -147,9 +147,9 @@
                     <div class="cuadro"></div>
                     <div class="texto">
                         <h6>
-                            Titulo de la Actividad recomendada
+                            <%= arrAct[0].nombre %>
                         </h6>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.adipisicing elit. adipisicing elit. Laudantium, sequi!</p>
+                        <p><%= arrAct[0].descripcion %></p>
                         <button>Iniciar</button>
                     </div>
                 </div>
@@ -158,9 +158,9 @@
                     <div class="cuadro"></div>
                     <div class="texto">
                         <h6>
-                            Titulo de la Actividad recomendada
+                            <%= arrAct[1].nombre %>
                         </h6>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium, sequi!</p>
+                        <p><%= arrAct[1].descripcion %></p>
                         <button>Iniciar</button>
                     </div>
                 </div>
@@ -169,9 +169,9 @@
                     <div class="cuadro"></div>
                     <div class="texto">
                         <h6>
-                            Titulo de la Actividad recomendada
+                            <%= arrAct[2].nombre %>
                         </h6>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium, sequi!</p>
+                        <p><%= arrAct[2].descripcion %></p>
                         <button>Iniciar</button>
                     </div>
                 </div>
@@ -180,9 +180,9 @@
                     <div class="cuadro"></div>
                     <div class="texto">
                         <h6>
-                            Titulo de la Actividad recomendada
+                            <%= arrAct[3].nombre %>
                         </h6>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium, sequi!</p>
+                        <p><%= arrAct[3].descripcion %></p>
                         <button>Iniciar</button>
                     </div>
                 </div>

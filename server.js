@@ -54,6 +54,8 @@ app.use(session({
 
 app.use(flash());
 
+
+
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.static(__dirname + 'login'));
 
@@ -170,8 +172,8 @@ router.post('/home', (req,res)=>{
                 if(err){
                     res.status(500).send('Error al autenticar al usuario');
                 }else if(result){
-                    //req.session.mail_v=mail;
-                    req.flash('mail_v', mail);
+                    req.session.mail_v=mail;
+                    //req.flash('mail_v', mail);
                     //console.log(req.session.mail_v);
                     //res.status(200).send('Usuario Autenticado Correctamente'+user._id);
                     //res.render('prueba');
@@ -184,6 +186,7 @@ router.post('/home', (req,res)=>{
         }
     });
 });
+
 
 router.post('/activi', (req,res)=>{
     const {nombre,descripcion}=req.body;
@@ -234,20 +237,24 @@ router.get("/act", function (req,res){
 })
 
 router.get('/prueba', function(req,res){
-    const email = req.flash('mail_v')
-    //const email = req.session.mail_v;
+    //const email = req.flash('mail_v')
+    const email = req.session.mail_v;
     //delete req.session.mail_v;
     User.findOne({mail: email}, (err, user)=>{
         if(err) throw err;
         const usuario = user.mail;
         const pass = user.password;
         res.render(__dirname+'/public'+'/perfil'+'/layouts'+'/perfil',{email});
-        /*res.render(__dirname+'/public'+'/prueba',{
-            email,
-            usuario,
-            pass
-        });*/
-        //console.log(user.password);
+    })
+})
+
+router.get('/actividades', function(req,res){
+    const email = req.session.mail_v;
+    console.log(email);
+    Act.find({}, (err, act)=>{
+        const arrAct=act
+        console.log(arrAct)
+        res.render(__dirname+'/public'+'/perfil'+'/layouts'+'/recomendacion',{arrAct});
     })
     
 })
