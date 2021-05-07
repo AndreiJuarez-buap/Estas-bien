@@ -13,6 +13,7 @@ const bcrypt = require('bcrypt');
 const url = require('url');
 const session = require('express-session');
 const MongoStore = require('connect-mongodb-session')(session);
+const flash = require('connect-flash');
 
 const saltRounds = 10;
 
@@ -42,14 +43,16 @@ app.use(bodyParser.urlencoded({extended: false}));
 const server = http.createServer(app);
 
 app.set('view engine', 'ejs');
-app.set('views', __dirname + '/views');
+//app.set('views', __dirname + '/views');
+app.set('views', __dirname + '/views2');
 
 app.use(session({
     secret: 'ashwtbuap2021',
     resave: false,
-    saveUninitialized: false,
-    store: store1
+    saveUninitialized: false
 }));
+
+app.use(flash());
 
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.static(__dirname + 'login'));
@@ -167,8 +170,12 @@ router.post('/home', (req,res)=>{
                 if(err){
                     res.status(500).send('Error al autenticar al usuario');
                 }else if(result){
+                    //req.session.mail_v=mail;
+                    req.flash('mail_v', mail);
+                    //console.log(req.session.mail_v);
                     //res.status(200).send('Usuario Autenticado Correctamente'+user._id);
-                    res.redirect('https://www.google.com');
+                    //res.render('prueba');
+                    res.redirect('/prueba');
                     //console.log("Usuario: "+ user.mail);
                 }else{
                     res.status(500).send('Usuario y/o Contraseña Incorrecta');
@@ -224,6 +231,25 @@ router.get("/espe", function (req,res){
 
 router.get("/act", function (req,res){
     res.sendFile(path.join(__dirname+'/public'+'/act.html'));
+})
+
+router.get('/prueba', function(req,res){
+    const email = req.flash('mail_v')
+    //const email = req.session.mail_v;
+    //delete req.session.mail_v;
+    User.findOne({mail: email}, (err, user)=>{
+        if(err) throw err;
+        const usuario = user.mail;
+        const pass = user.password;
+        res.render(__dirname+'/public'+'/perfil'+'/layouts'+'/perfil',{email});
+        /*res.render(__dirname+'/public'+'/prueba',{
+            email,
+            usuario,
+            pass
+        });*/
+        //console.log(user.password);
+    })
+    
 })
 
 //Implementacion de la pagina de error 404
