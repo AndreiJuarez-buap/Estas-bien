@@ -316,7 +316,7 @@ btnF.addEventListener('click', function(){
     const calif = document.getElementById("porcentage")
     const message = document.getElementById("message")
 
-    if(result>60){
+    if(result>=60){
         calif.innerHTML=result
         message.innerHTML="Tus niveles emocionales estan altos, te recomendamos registrarte en la app y nosotros te ayudaremos con tus emociones"
     }else{
