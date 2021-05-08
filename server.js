@@ -95,6 +95,15 @@ router.get('/login', function(req,res){
     res.sendFile(path.join(__dirname+'/public'+'/login'+'/login.html'));
 })
 
+// Ruta al test de la app
+router.get('/instrucciones', function(req,res){
+    res.sendFile(path.join(__dirname+'/public'+'/quiz'+'/instrucciones.html'));
+})
+
+router.get('/cuestionario', function(req,res){
+    res.sendFile(path.join(__dirname+'/public'+'/quiz'+'/quiz.html'));
+})
+
 //Metodos POST
 //POST para el registro
 router.post('/registrarse', (req,res)=>{
