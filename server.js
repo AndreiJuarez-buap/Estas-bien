@@ -173,12 +173,7 @@ router.post('/home', (req,res)=>{
                     res.status(500).send('Error al autenticar al usuario');
                 }else if(result){
                     req.session.mail_v=mail;
-                    //req.flash('mail_v', mail);
-                    //console.log(req.session.mail_v);
-                    //res.status(200).send('Usuario Autenticado Correctamente'+user._id);
-                    //res.render('prueba');
                     res.redirect('/prueba');
-                    //console.log("Usuario: "+ user.mail);
                 }else{
                     res.status(500).send('Usuario y/o Contraseña Incorrecta');
                 }
@@ -253,10 +248,21 @@ router.get('/actividades', function(req,res){
     console.log(email);
     Act.find({}, (err, act)=>{
         const arrAct=act
-        console.log(arrAct)
+        //console.log(arrAct)
         res.render(__dirname+'/public'+'/perfil'+'/layouts'+'/recomendacion',{arrAct});
     })
     
+})
+
+router.get('/directorio', function(req,res){
+    const email = req.session.mail_v;
+    console.log(email);
+    res.render(__dirname+'/public'+'/perfil'+'/layouts'+'/directorio');
+})
+
+router.get('/salir', function(req,res){
+    //delete req.session.mail_v;
+    res.redirect('/login');
 })
 
 //Implementacion de la pagina de error 404
