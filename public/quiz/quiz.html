@@ -10,7 +10,7 @@
     <title>Test ¿Estás Bien?</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="contain">
         <div id="test" class="justify-center flex-column">
             
             <!---------Pregunta 1-------->
@@ -92,12 +92,12 @@
             <h1 id="question">¿Has tenido problemas con el distanciamiento social?</h1>
             <div class="choice-container">
                 <p class="choice-prefix">a)</p>
-                <p class="choice-text" data-number="15" id="15">Si</p>
+                <p class="choice-text" data-number="15" id="14">Si</p>
             </div>
 
             <div class="choice-container">
                 <p class="choice-prefix">b)</p>
-                <p class="choice-text" data-number="16" id="16">No</p>
+                <p class="choice-text" data-number="16" id="15">No</p>
             </div>
 
             <!---------Pregunta 1-------->
@@ -105,40 +105,53 @@
 
             <div class="choice-container">
                 <p class="choice-prefix">a)</p>
-                <p class="choice-text" data-number="17" id="17">Alegria</p>
+                <p class="choice-text" data-number="17" id="16">Alegria</p>
             </div>
 
             <div class="choice-container">
                 <p class="choice-prefix">b)</p>
-                <p class="choice-text" data-number="18" id="18">Temor</p>
+                <p class="choice-text" data-number="18" id="17">Temor</p>
             </div>
 
             <div class="choice-container">
                 <p class="choice-prefix">c)</p>
-                <p class="choice-text" data-number="19" id="19">Tristeza</p>
+                <p class="choice-text" data-number="19" id="18">Tristeza</p>
             </div>
 
             <div class="choice-container">
                 <p class="choice-prefix">d)</p>
-                <p class="choice-text" data-number="20" id="20">Enojo</p>
+                <p class="choice-text" data-number="20" id="19">Enojo</p>
             </div>
 
             <div class="choice-container">
                 <p class="choice-prefix">e)</p>
-                <p class="choice-text" data-number="21" id="21">Diversión</p>
+                <p class="choice-text" data-number="21" id="20">Diversión</p>
             </div>
 
             <div class="choice-container">
                 <p class="choice-prefix">f)</p>
-                <p class="choice-text" data-number="22" id="22">Interes</p>
+                <p class="choice-text" data-number="22" id="21">Interes</p>
             </div>
 
 
-            <div class="flex-column flex-center" id="home">
-                <a href="quiz-final.html" class="btn1">Siguiente</a>
+            <div class="flex-column flex-center" id="home" >
+                <p class="btn1" id="btn1">Finalizar</p>
             </div>
         </div>
     </div>
-    <script src="test.js"></script>
+
+    <div class="contenedor display-none" id="parametros">
+        <div class="progreso pro-1">
+            <div class="circle circle1">
+                <h1 id="porcentage">25%</h1>
+                <h2>Nivel Emocional</h2>
+            </div>
+        </div>
+    </div>
+    <div class="flex-column flex-center display-none" id="home">
+        <h1 id="message"></h1>
+        <a href="/registro" class="btn display-none" id="btnR">Registrarse</a>
+    </div>
+    <script src="../quiz/test.js"></script>
 </body>
 </html>

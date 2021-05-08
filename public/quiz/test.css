@@ -61,3 +61,34 @@ body{
 .seleccion{
     background: #1a2846;
 }
+
+.contenedor{
+    height: 250px;
+    width: 250px;
+    overflow: hidden;
+    margin: 110px 30px;
+    position: relative;
+}
+
+.contenedor .progreso{
+    margin: 130px auto;
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    /*border-left: 20px solid rgba(5, 21, 170);
+    border-right: 20px solid rgba(5, 21, 170);
+    border-top: 20px solid rgba(5, 21, 170);*/
+    position: relative;
+    color: white;
+    text-align: center;
+    font-size: 3rem;
+}
+
+.pro-1{
+    border: 20px solid rgb(34, 231,34,.3);
+    color: white;
+}
+
+.display-none{
+    display: none;
+}
