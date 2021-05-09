@@ -96,7 +96,7 @@ a{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     margin: 40px 0;
     top: 500px;
     left: -500px;

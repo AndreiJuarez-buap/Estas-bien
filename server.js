@@ -266,7 +266,11 @@ router.get('/actividades', function(req,res){
 router.get('/directorio', function(req,res){
     const email = req.session.mail_v;
     console.log(email);
-    res.render(__dirname+'/public'+'/perfil'+'/layouts'+'/directorio');
+    Espec.find({}, (err,espec)=>{
+        const arrEspec=espec
+        //console.log(arrEspec)
+        res.render(__dirname+'/public'+'/perfil'+'/layouts'+'/directorio',{arrEspec});
+    })
 })
 
 router.get('/salir', function(req,res){
